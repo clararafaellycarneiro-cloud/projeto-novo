@@ -1,184 +1,445 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espaço Acolher - Portal de Apoio Emocional</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
+/* Variables para suporte a temas */
+:root {
+    --bg-primary: #f4f8fb;
+    --bg-surface: #ffffff;
+    --text-primary: #2c3e50;
+    --text-secondary: #596978;
+    --accent-color: #3a86ff;
+    --accent-hover: #2563eb;
+    --secondary-color: #06d6a0;
+    --border-color: #e2e8f0;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    --font-size-base: 16px;
+}
 
-    <div class="accessibility-bar">
-        <button id="contrast-toggle" title="Alternar Alto Contraste"><i class="fa-solid fa-circle-half-stroke"></i> Contraste</button>
-        <button id="font-increase" title="Aumentar Fonte">A+</button>
-        <button id="font-decrease" title="Diminuir Fonte">A-</button>
-        <button id="theme-toggle" title="Modo Escuro"><i class="fa-solid fa-moon"></i></button>
-    </div>
+/* Modo Escuro */
+body.dark-mode {
+    --bg-primary: #12181f;
+    --bg-surface: #1e2630;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --border-color: #334155;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
 
-    <header>
-        <div class="container logo-container">
-            <i class="fa-solid fa-heart-pulse logo-icon"></i>
-            <h1>Espaço <span>Acolher</span></h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#escuta">Portal de Escuta</a></li>
-                <li><a href="#quiz">Quiz</a></li>
-                <li><a href="#referencias">Referências</a></li>
-            </ul>
-        </nav>
-    </header>
+/* Alto Contraste */
+body.high-contrast {
+    --bg-primary: #000000;
+    --bg-surface: #000000;
+    --text-primary: #ffff00;
+    --text-secondary: #ffffff;
+    --accent-color: #00ffff;
+    --border-color: #ffffff;
+}
 
-    <main>
-        <section id="inicio" class="hero-section">
-            <div class="container hero-content">
-                <div class="hero-text">
-                    <h2>Você não precisa carregar tudo sozinho.</h2>
-                    <p>Bem-vindo ao Portal de Apoio ao Estudante. Este é um espaço seguro criado para informar, acolher e orientar sobre a saúde emocional no ambiente escolar. Cuidar dos seus sentimentos também faz parte do seu aprendizado.</p>
-                    <a href="#escuta" class="btn-primary">Preciso desabafar</a>
-                </div>
-                <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80" alt="Estudantes unidos conversando e se apoiando">
-                </div>
-            </div>
-        </section>
+/* Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-        <section class="info-cards container">
-            <div class="card">
-                <i class="fa-solid fa-brain card-icon"></i>
-                <h3>O que é Saúde Emocional?</h3>
-                <p>É a habilidade de reconhecer, compreender e gerenciar suas emoções diante dos desafios diários do ambiente escolar e pessoal.</p>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-hand-holding-heart card-icon"></i>
-                <h3>Sinais de Alerta</h3>
-                <p>Cansaço excessivo, isolamento, ansiedade constante e mudanças bruscas de humor são indicativos de que é hora de pedir ajuda.</p>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-users card-icon"></i>
-                <h3>Rede de Apoio</h3>
-                <p>Professores, pedagogos, amigos e familiares são pontes importantes para momentos de dificuldade. Conversar ajuda!</p>
-            </div>
-        </section>
+html {
+    scroll-behavior: smooth;
+    font-size: var(--font-size-base);
+}
 
-        <hr class="divider">
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+}
 
-        <section id="escuta" class="escuta-section container">
-            <h2><i class="fa-solid fa-comments"></i> Portal de Escuta</h2>
-            <p class="section-subtitle">Escreva o que está sentindo. Este formulário é apenas uma simulação e suas palavras não ficam salvas em nenhum lugar.</p>
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
 
-            <div class="escuta-grid">
-                <form id="form-escuta" class="escuta-form">
-                    <label for="desabafo">Como você se sente hoje?</label>
-                    <textarea id="desabafo" rows="5" placeholder="Sinta-se à vontade para escrever..." required></textarea>
-                    <button type="submit" class="btn-primary">Enviar Desabafo</button>
-                </form>
+/* Barra de Acessibilidade */
+.accessibility-bar {
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
 
-                <div class="escuta-info">
-                    <div id="resposta-simulada" class="resposta-box hidden"></div>
+.accessibility-bar button {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: 0.2s;
+}
 
-                    <div class="frase-box">
-                        <blockquote id="quote-display">"Pedir ajuda não é sinal de fraqueza, mas sim de coragem."</blockquote>
-                    </div>
+.accessibility-bar button:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
 
-                    <div class="orientacoes-box">
-                        <h4>Quem procurar na escola e fora dela:</h4>
-                        <ul>
-                            <li><i class="fa-solid fa-check"></i> Equipe pedagógica e professores de confiança</li>
-                            <li><i class="fa-solid fa-check"></i> Direção da escola ou psicólogo escolar</li>
-                            <li><i class="fa-solid fa-check"></i> Pais, responsáveis ou familiares próximos</li>
-                            <li><i class="fa-solid fa-phone"></i> <strong>CVV (Centro de Valorização da Vida):</strong> Ligue 188 (gratuito)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+/* Header */
+header {
+    background: var(--bg-surface);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+}
 
-        <hr class="divider">
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: auto;
+    margin: 0;
+}
 
-        <section id="quiz" class="quiz-section container">
-            <h2><i class="fa-solid fa-lightbulb"></i> Quiz: Teste seus conhecimentos</h2>
-            <p class="section-subtitle">Responda às 5 perguntas sobre saúde emocional e convivência escolar.</p>
+.logo-icon {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+}
 
-            <div id="quiz-container" class="quiz-box">
-                <div class="question-step active" data-step="1">
-                    <h3>1. Se você notar que um colega está triste e isolado nos últimos dias, qual atitude demonstra empatia?</h3>
-                    <div class="options">
-                        <button onclick="selectOption(this, false)">Ignorar, pois cada um cuida da sua vida.</button>
-                        <button onclick="selectOption(this, true)">Aproximar-se com respeito e perguntar se ele quer conversar ou precisa de algo.</button>
-                        <button onclick="selectOption(this, false)">Fazer piada com a situação para tentar 'animá-lo'.</button>
-                    </div>
-                </div>
+.logo-container h1 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+}
 
-                <div class="question-step" data-step="2">
-                    <h3>2. Guardar todos os sentimentos e frustrações para si mesmo é uma boa estratégia de saúde mental?</h3>
-                    <div class="options">
-                        <button onclick="selectOption(this, false)">Sim, assim não incomodo ninguém.</button>
-                        <button onclick="selectOption(this, true)">Não, conversar e expressar emoções alivia o estresse e evita sobrecarga emocional.</button>
-                        <button onclick="selectOption(this, false)">Sim, é melhor resolver tudo sem ajuda.</button>
-                    </div>
-                </div>
+.logo-container span {
+    color: var(--accent-color);
+}
 
-                <div class="question-step" data-step="3">
-                    <h3>3. O que você deve fazer se a rotina de estudos estiver causando ansiedade excessiva?</h3>
-                    <div class="options">
-                        <button onclick="selectOption(this, true)">Organizar uma rotina equilibrada, fazer pausas e pedir orientação aos professores/pedagogos.</button>
-                        <button onclick="selectOption(this, false)">Parar de estudar completamente.</button>
-                        <button onclick="selectOption(this, false)">Estudar a noite inteira sem dormir para compensar.</button>
-                    </div>
-                </div>
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
 
-                <div class="question-step" data-step="4">
-                    <h3>4. Qual destas opções é um canal gratuito e seguro de apoio emocional no Brasil?</h3>
-                    <div class="options">
-                        <button onclick="selectOption(this, false)">Redes sociais anônimas.</button>
-                        <button onclick="selectOption(this, true)">O CVV (Centro de Valorização da Vida) pelo número 188.</button>
-                        <button onclick="selectOption(this, false)">Fóruns da internet.</button>
-                    </div>
-                </div>
+nav a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 600;
+    transition: color 0.2s;
+}
 
-                <div class="question-step" data-step="5">
-                    <h3>5. Como promover um ambiente escolar psicologicamente seguro?</h3>
-                    <div class="options">
-                        <button onclick="selectOption(this, false)">Criticando o desempenho dos colegas.</button>
-                        <button onclick="selectOption(this, false)">Excluindo pessoas que pensam diferente.</button>
-                        <button onclick="selectOption(this, true)">Praticando o respeito, a escuta sem julgamentos e apoiando quem precisa.</button>
-                    </div>
-                </div>
+nav a:hover {
+    color: var(--accent-color);
+}
 
-                <div id="quiz-result" class="quiz-result hidden">
-                    <h3>Resultado</h3>
-                    <p id="result-text"></p>
-                    <button onclick="restartQuiz()" class="btn-primary">Refazer Quiz</button>
-                </div>
-            </div>
-        </section>
+/* Hero Section */
+.hero-section {
+    padding: 4rem 0;
+}
 
-        <hr class="divider">
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
 
-        <section id="referencias" class="referencias-section container">
-            <h2><i class="fa-solid fa-book-bookmark"></i> Fontes e Referências</h2>
-            <p>Este portal utiliza dados e orientações baseados em materiais confiáveis:</p>
-            <ul class="ref-list">
-                <li><a href="https://www.gov.br/saude/pt-br" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ministério da Saúde - Saúde Mental no SUS</a></li>
-                <li><a href="https://cvv.org.br/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> CVV - Centro de Valorização da Vida (Ligue 188)</a></li>
-                <li><a href="https://www.unicef.org/brazil/saude-mental-dos-adolescentes" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> UNICEF Brasil - Saúde Mental dos Adolescentes</a></li>
-                <li><a href="https://www.fiocruz.br/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Fundação Oswaldo Cruz (Fiocruz) - Cartilhas de Saúde Emocional</a></li>
-            </ul>
-        </section>
-    </main>
+.hero-text {
+    flex: 1;
+}
 
-    <button id="back-to-top" title="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
+.hero-text h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
 
-    <footer>
-        <div class="container footer-content">
-            <p>&copy; 2026 Portal de Apoio ao Estudante | Projeto Acadêmico de Saúde Emocional</p>
-            <p>Desenvolvido com foco no acolhimento e respeito no ambiente escolar.</p>
-        </div>
-    </footer>
+.hero-text p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+.hero-image {
+    flex: 1;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    object-fit: cover;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+/* Informações */
+.info-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem auto;
+}
+
+.card {
+    background-color: var(--bg-surface);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.card h3 {
+    margin-bottom: 0.5rem;
+}
+
+.card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.divider {
+    border: none;
+    height: 1px;
+    background: var(--border-color);
+    margin: 3rem 0;
+}
+
+/* Portal de Escuta */
+.section-subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.escuta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.escuta-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: var(--bg-surface);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+}
+
+.escuta-form textarea {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    resize: vertical;
+    font-size: 1rem;
+}
+
+.escuta-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.resposta-box {
+    background-color: #d1e7dd;
+    color: #0f5132;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid #badbcc;
+}
+
+.frase-box {
+    background: var(--bg-surface);
+    border-left: 4px solid var(--accent-color);
+    padding: 1rem;
+    border-radius: 4px;
+    font-style: italic;
+    box-shadow: var(--shadow);
+}
+
+.orientacoes-box {
+    background: var(--bg-surface);
+    padding: 1.2rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.orientacoes-box h4 {
+    margin-bottom: 0.8rem;
+}
+
+.orientacoes-box ul {
+    list-style: none;
+}
+
+.orientacoes-box li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.orientacoes-box i {
+    color: var(--secondary-color);
+    margin-right: 0.5rem;
+}
+
+/* Quiz Section */
+.quiz-box {
+    background: var(--bg-surface);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.question-step {
+    display: none;
+}
+
+.question-step.active {
+    display: block;
+}
+
+.question-step h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.options button {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    text-align: left;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.options button:hover {
+    background: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+.quiz-result {
+    text-align: center;
+    padding: 1rem;
+}
+
+.quiz-result h3 {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.quiz-result p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Referências */
+.ref-list {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.ref-list li {
+    margin-bottom: 0.8rem;
+}
+
+.ref-list a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.ref-list a:hover {
+    text-decoration: underline;
+}
+
+/* Utilities */
+.hidden {
+    display: none !important;
+}
+
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    box-shadow: var(--shadow);
+    transition: opacity 0.3s;
+}
+
+footer {
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 4rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .hero-content {
+        flex-direction: column;
+    }
+
+    .escuta-grid {
+        grid-template-columns: 1fr;
+    }
+}
