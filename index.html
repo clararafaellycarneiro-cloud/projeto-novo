@@ -1,49 +1,184 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal Mente Aberta | Apoio à Saúde Emocional</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espaço Acolher - Portal de Apoio Emocional</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-  <header>
-    <nav class="navbar">
-      <div class="logo">🧠 Mente Aberta</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Início</a></li>
-        <li><a href="escuta.html">Portal de Escuta</a></li>
-        <li><a href="quiz.html">Quiz</a></li>
-        <li><a href="referencias.html">Referências</a></li>
-      </ul>
-      <div class="acessibilidade">
-        <button onclick="alterarFonte(1)">A+</button>
-        <button onclick="alterarFonte(-1)">A-</button>
-        <button onclick="alternarAltoContraste()">Contraste</button>
-      </div>
-    </nav>
-  </header>
+    <div class="accessibility-bar">
+        <button id="contrast-toggle" title="Alternar Alto Contraste"><i class="fa-solid fa-circle-half-stroke"></i> Contraste</button>
+        <button id="font-increase" title="Aumentar Fonte">A+</button>
+        <button id="font-decrease" title="Diminuir Fonte">A-</button>
+        <button id="theme-toggle" title="Modo Escuro"><i class="fa-solid fa-moon"></i></button>
+    </div>
 
-  <main class="container">
-    <section class="hero">
-      <h1>Portal de Apoio à Saúde Emocional</h1>
-      <p class="boas-vindas">
-        Bem-vindo ao Portal Mente Aberta! Cuidar da sua saúde emocional é tão importante quanto cuidar do corpo. Aqui você encontra um espaço seguro, orientações sobre como lidar com a ansiedade do dia a dia escolar e contatos de apoio para quando precisar.
-      </p>
-    </section>
+    <header>
+        <div class="container logo-container">
+            <i class="fa-solid fa-heart-pulse logo-icon"></i>
+            <h1>Espaço <span>Acolher</span></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#escuta">Portal de Escuta</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+                <li><a href="#referencias">Referências</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <section class="informacoes">
-      <h2>Por que falar sobre Saúde Emocional na Escola?</h2>
-      <p>A rotina escolar traz desafios, provas, expectativas e mudanças. Reconhecer suas emoções e saber a hora de pedir ajuda é o primeiro passo para manter o bem-estar visualizando um ambiente escolar acolhedor.</p>
-    </section>
-  </main>
+    <main>
+        <section id="inicio" class="hero-section">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h2>Você não precisa carregar tudo sozinho.</h2>
+                    <p>Bem-vindo ao Portal de Apoio ao Estudante. Este é um espaço seguro criado para informar, acolher e orientar sobre a saúde emocional no ambiente escolar. Cuidar dos seus sentimentos também faz parte do seu aprendizado.</p>
+                    <a href="#escuta" class="btn-primary">Preciso desabafar</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80" alt="Estudantes unidos conversando e se apoiando">
+                </div>
+            </div>
+        </section>
 
-  <footer>
-    <p>&copy; Projeto Escolar - Portal de Apoio ao Estudante</p>
-    <button onclick="voltarAoTopo()" id="btn-topo">↑ Voltar ao topo</button>
-  </footer>
+        <section class="info-cards container">
+            <div class="card">
+                <i class="fa-solid fa-brain card-icon"></i>
+                <h3>O que é Saúde Emocional?</h3>
+                <p>É a habilidade de reconhecer, compreender e gerenciar suas emoções diante dos desafios diários do ambiente escolar e pessoal.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-hand-holding-heart card-icon"></i>
+                <h3>Sinais de Alerta</h3>
+                <p>Cansaço excessivo, isolamento, ansiedade constante e mudanças bruscas de humor são indicativos de que é hora de pedir ajuda.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-users card-icon"></i>
+                <h3>Rede de Apoio</h3>
+                <p>Professores, pedagogos, amigos e familiares são pontes importantes para momentos de dificuldade. Conversar ajuda!</p>
+            </div>
+        </section>
 
-  <script src="js/main.js"></script>
+        <hr class="divider">
+
+        <section id="escuta" class="escuta-section container">
+            <h2><i class="fa-solid fa-comments"></i> Portal de Escuta</h2>
+            <p class="section-subtitle">Escreva o que está sentindo. Este formulário é apenas uma simulação e suas palavras não ficam salvas em nenhum lugar.</p>
+
+            <div class="escuta-grid">
+                <form id="form-escuta" class="escuta-form">
+                    <label for="desabafo">Como você se sente hoje?</label>
+                    <textarea id="desabafo" rows="5" placeholder="Sinta-se à vontade para escrever..." required></textarea>
+                    <button type="submit" class="btn-primary">Enviar Desabafo</button>
+                </form>
+
+                <div class="escuta-info">
+                    <div id="resposta-simulada" class="resposta-box hidden"></div>
+
+                    <div class="frase-box">
+                        <blockquote id="quote-display">"Pedir ajuda não é sinal de fraqueza, mas sim de coragem."</blockquote>
+                    </div>
+
+                    <div class="orientacoes-box">
+                        <h4>Quem procurar na escola e fora dela:</h4>
+                        <ul>
+                            <li><i class="fa-solid fa-check"></i> Equipe pedagógica e professores de confiança</li>
+                            <li><i class="fa-solid fa-check"></i> Direção da escola ou psicólogo escolar</li>
+                            <li><i class="fa-solid fa-check"></i> Pais, responsáveis ou familiares próximos</li>
+                            <li><i class="fa-solid fa-phone"></i> <strong>CVV (Centro de Valorização da Vida):</strong> Ligue 188 (gratuito)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="quiz" class="quiz-section container">
+            <h2><i class="fa-solid fa-lightbulb"></i> Quiz: Teste seus conhecimentos</h2>
+            <p class="section-subtitle">Responda às 5 perguntas sobre saúde emocional e convivência escolar.</p>
+
+            <div id="quiz-container" class="quiz-box">
+                <div class="question-step active" data-step="1">
+                    <h3>1. Se você notar que um colega está triste e isolado nos últimos dias, qual atitude demonstra empatia?</h3>
+                    <div class="options">
+                        <button onclick="selectOption(this, false)">Ignorar, pois cada um cuida da sua vida.</button>
+                        <button onclick="selectOption(this, true)">Aproximar-se com respeito e perguntar se ele quer conversar ou precisa de algo.</button>
+                        <button onclick="selectOption(this, false)">Fazer piada com a situação para tentar 'animá-lo'.</button>
+                    </div>
+                </div>
+
+                <div class="question-step" data-step="2">
+                    <h3>2. Guardar todos os sentimentos e frustrações para si mesmo é uma boa estratégia de saúde mental?</h3>
+                    <div class="options">
+                        <button onclick="selectOption(this, false)">Sim, assim não incomodo ninguém.</button>
+                        <button onclick="selectOption(this, true)">Não, conversar e expressar emoções alivia o estresse e evita sobrecarga emocional.</button>
+                        <button onclick="selectOption(this, false)">Sim, é melhor resolver tudo sem ajuda.</button>
+                    </div>
+                </div>
+
+                <div class="question-step" data-step="3">
+                    <h3>3. O que você deve fazer se a rotina de estudos estiver causando ansiedade excessiva?</h3>
+                    <div class="options">
+                        <button onclick="selectOption(this, true)">Organizar uma rotina equilibrada, fazer pausas e pedir orientação aos professores/pedagogos.</button>
+                        <button onclick="selectOption(this, false)">Parar de estudar completamente.</button>
+                        <button onclick="selectOption(this, false)">Estudar a noite inteira sem dormir para compensar.</button>
+                    </div>
+                </div>
+
+                <div class="question-step" data-step="4">
+                    <h3>4. Qual destas opções é um canal gratuito e seguro de apoio emocional no Brasil?</h3>
+                    <div class="options">
+                        <button onclick="selectOption(this, false)">Redes sociais anônimas.</button>
+                        <button onclick="selectOption(this, true)">O CVV (Centro de Valorização da Vida) pelo número 188.</button>
+                        <button onclick="selectOption(this, false)">Fóruns da internet.</button>
+                    </div>
+                </div>
+
+                <div class="question-step" data-step="5">
+                    <h3>5. Como promover um ambiente escolar psicologicamente seguro?</h3>
+                    <div class="options">
+                        <button onclick="selectOption(this, false)">Criticando o desempenho dos colegas.</button>
+                        <button onclick="selectOption(this, false)">Excluindo pessoas que pensam diferente.</button>
+                        <button onclick="selectOption(this, true)">Praticando o respeito, a escuta sem julgamentos e apoiando quem precisa.</button>
+                    </div>
+                </div>
+
+                <div id="quiz-result" class="quiz-result hidden">
+                    <h3>Resultado</h3>
+                    <p id="result-text"></p>
+                    <button onclick="restartQuiz()" class="btn-primary">Refazer Quiz</button>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="referencias" class="referencias-section container">
+            <h2><i class="fa-solid fa-book-bookmark"></i> Fontes e Referências</h2>
+            <p>Este portal utiliza dados e orientações baseados em materiais confiáveis:</p>
+            <ul class="ref-list">
+                <li><a href="https://www.gov.br/saude/pt-br" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ministério da Saúde - Saúde Mental no SUS</a></li>
+                <li><a href="https://cvv.org.br/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> CVV - Centro de Valorização da Vida (Ligue 188)</a></li>
+                <li><a href="https://www.unicef.org/brazil/saude-mental-dos-adolescentes" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> UNICEF Brasil - Saúde Mental dos Adolescentes</a></li>
+                <li><a href="https://www.fiocruz.br/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Fundação Oswaldo Cruz (Fiocruz) - Cartilhas de Saúde Emocional</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <button id="back-to-top" title="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 Portal de Apoio ao Estudante | Projeto Acadêmico de Saúde Emocional</p>
+            <p>Desenvolvido com foco no acolhimento e respeito no ambiente escolar.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
