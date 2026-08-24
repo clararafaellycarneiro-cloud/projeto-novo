@@ -3,91 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acolhimento e Apoio | Portal Violência Contra a Mulher</title>
+    <title>Portal de Apoio ao Estudante | Conscientização e Respeito</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Acessibilidade / Ações Rápidas -->
     <div class="accessibility-bar">
         <button id="btn-font">A<sup>+</sup> Aumentar Fonte</button>
         <button id="btn-theme">🌙 Modo Escuro</button>
     </div>
 
-    <!-- Cabeçalho e Navegação -->
     <header>
         <div class="logo">
-            <h1>Acolhimento e Apoio</h1>
-            <p>Portal Violência Contra a Mulher</p>
+            <h1>Portal de Apoio</h1>
+            <p>Combate à Violência Contra a Mulher</p>
         </div>
         <nav>
             <ul>
                 <li><a href="#inicio">Início</a></li>
+                <li><a href="#tipos">Tipos de Violência</a></li>
                 <li><a href="#escuta">Portal de Escuta</a></li>
-                <li><a href="#quiz">Quiz</a></li>
+                <li><a href="#quiz">Quiz Interativo</a></li>
                 <li><a href="#referencias">Referências</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <!-- Página Inicial / Apresentação -->
         <section id="inicio" class="hero-section">
             <div class="hero-content">
-                <h2>Violência Contra a Mulher: Você Não Está Só.</h2>
+                <h2>Violência Contra a Mulher: Informação, Acolhimento e Respeito</h2>
                 <p class="welcome-msg">
-                    Bem-vindo ao <strong>Portal de Apoio ao Estudante</strong>. Aqui você encontrará informações, orientações e apoio sobre situações vivenciadas no ambiente escolar e social. Nossa missão é criar um espaço seguro, empático e acolhedor.
+                    Bem-vindo ao <strong>Portal de Apoio ao Estudante</strong>. Aqui você encontrará informações, orientações e apoio sobre situações vivenciadas no ambiente escolar e na sociedade. Nossa missão é criar um espaço seguro, empático e informativo para promover a igualdade e o respeito.
                 </p>
-                <a href="#escuta" class="btn-primary">Precisa conversar? Clique aqui</a>
+                <a href="#escuta" class="btn-primary">Acessar Portal de Escuta</a>
             </div>
             <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Mulheres se apoiando e conversando">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Apoio e união entre mulheres">
             </div>
         </section>
 
-        <section class="info-cards">
-            <h3>Recursos e Informações</h3>
+        <section id="tipos" class="section-container">
+            <h2>Conheça os Tipos de Violência</h2>
+            <p class="section-desc">A Lei Maria da Penha (Lei nº 11.340/2006) define cinco formas de violência doméstica e familiar:</p>
             <div class="cards-grid">
                 <div class="card">
-                    <h4>Entenda o Problema</h4>
-                    <p>A violência contra a mulher pode ser física, psicológica, moral, patrimonial ou sexual. Reconhecer os sinais é o primeiro passo para interromper o ciclo.</p>
+                    <h4>Física</h4>
+                    <p>Qualquer conduta que ofenda a integridade ou saúde corporal da mulher.</p>
                 </div>
                 <div class="card">
-                    <h4>Onde Buscar Ajuda</h4>
-                    <p>Procure a orientação escolar (pedagogos, diretores), familiares de confiança ou ligue para a Central de Atendimento à Mulher pelo número <strong>180</strong>.</p>
+                    <h4>Psicológica</h4>
+                    <p>Ações que causam dano emocional, diminuição da autoestima, controle ou humilhação.</p>
+                </div>
+                <div class="card">
+                    <h4>Sexual</h4>
+                    <p>Condutas que prescrevam a presenciar, manter ou a participar de relação sexual não desejada.</p>
+                </div>
+                <div class="card">
+                    <h4>Patrimonial</h4>
+                    <p>Retenção, subtração ou destruição de pertences, objetos de trabalho ou recursos econômicos.</p>
+                </div>
+                <div class="card">
+                    <h4>Moral</h4>
+                    <p>Condutas que configurem calúnia, difamação ou injúria contra a mulher.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Portal de Escuta -->
         <section id="escuta" class="section-container">
             <h2>Portal de Escuta</h2>
-            <p class="section-desc">Este é um espaço simbólico e seguro. Escreva o que está sentindo ou desabafe sobre alguma situação vivenciada. <em>Nenhuma informação digitada aqui é armazenada.</em></p>
+            <p class="section-desc">Este é um espaço seguro e simbólico. Escreva seus sentimentos ou dúvidas. <em>Aviso: nenhuma informação digitada neste formulário é salva ou transmitida.</em></p>
 
             <form id="form-escuta">
-                <label for="desabafo">Seu Desabafo:</label>
-                <textarea id="desabafo" rows="5" placeholder="Sinta-se à vontade para escrever..." required></textarea>
-                <button type="submit" class="btn-primary">Enviar Desabafo</button>
+                <label for="desabafo">Seu Desabafo / Mensagem:</label>
+                <textarea id="desabafo" rows="5" placeholder="Escreva aqui com tranquilidade..." required></textarea>
+                <button type="submit" class="btn-primary">Enviar Mensagem</button>
             </form>
 
             <div id="resposta-escuta" class="hidden">
                 <p id="mensagem-resposta"></p>
                 <div class="orientacoes">
-                    <h4>Orientações Importantes:</h4>
+                    <h4>Onde buscar ajuda real:</h4>
                     <ul>
-                        <li>Você não precisa passar por isso sozinho(a).</li>
-                        <li>Procure um professor, pedagogo ou a direção da sua escola.</li>
-                        <li>Converse com familiares ou adultos de sua confiança.</li>
-                        <li>Em caso de emergência ou denúncia, ligue <strong>180</strong> (Central de Atendimento à Mulher).</li>
+                        <li>Fale com a equipe pedagógica, direção ou professores de sua confiança na escola.</li>
+                        <li>Procure orientação de familiares ou adultos responsáveis.</li>
+                        <li><strong>Ligue 180:</strong> Central de Atendimento à Mulher (Serviço gratuito, anônimo e disponível 24h).</li>
+                        <li>Em situações de emergência imediata, ligue <strong>190</strong> (Polícia Militar).</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Quiz Interativo -->
         <section id="quiz" class="section-container">
-            <h2>Quiz Interativo</h2>
-            <p class="section-desc">Teste seus conhecimentos sobre respeito, prevenção e combate à violência contra a mulher.</p>
+            <h2>Quiz Interativo de Conscientização</h2>
+            <p class="section-desc">Responda às 5 perguntas abaixo para testar e reforçar seus conhecimentos.</p>
 
             <div id="quiz-container">
                 <div id="question-box"></div>
@@ -102,26 +111,23 @@
             </div>
         </section>
 
-        <!-- Página de Referências -->
         <section id="referencias" class="section-container">
-            <h2>Referências e Fontes de Pesquisa</h2>
-            <p class="section-desc">Confira abaixo os materiais e instituições oficiais consultados para a elaboração deste portal:</p>
+            <h2>Página de Referências</h2>
+            <p class="section-desc">Fontes oficiais e institucionais consultadas para a construção deste portal:</p>
             <ul class="ref-list">
                 <li><a href="https://www.gov.br/mulheres/pt-br" target="_blank" rel="noopener">Ministério das Mulheres (Governo Federal)</a></li>
                 <li><a href="http://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/lei/l11340.htm" target="_blank" rel="noopener">Lei Maria da Penha (Lei nº 11.340/2006)</a></li>
                 <li><a href="https://www.institute-maria-da-penha.org.br/" target="_blank" rel="noopener">Instituto Maria da Penha</a></li>
-                <li><a href="https://www.unicef.org/brazil/" target="_blank" rel="noopener">UNICEF Brasil - Proteção de Crianças e Adolescentes</a></li>
+                <li><a href="https://www.unicef.org/brazil/" target="_blank" rel="noopener">UNICEF Brasil – Proteção e Direitos da Criança e do Adolescente</a></li>
             </ul>
         </section>
     </main>
 
-    <!-- Botão Voltar ao Topo -->
     <button id="btn-top" title="Voltar ao topo">↑</button>
 
-    <!-- Rodapé -->
     <footer>
-        <p>&copy; 2026 Portal de Apoio ao Estudante. Projeto Educacional sem fins lucrativos.</p>
-        <p>Denuncie: Ligue <strong>180</strong> (Gratuito e Anônimo)</p>
+        <p>&copy; Portal de Apoio ao Estudante - Projeto Educacional Individual.</p>
+        <p>Central de Atendimento à Mulher: <strong>Ligue 180</strong></p>
     </footer>
 
     <script src="script.js"></script>
