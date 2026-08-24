@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Violência Contra a Mulher | Informação e Conscientização</title>
+    <title>Quebrando o Silêncio | Violência Contra a Mulher</title>
 
     <style>
+        /* =========================
+           CONFIGURAÇÕES GERAIS
+        ========================== */
+
         * {
             margin: 0;
             padding: 0;
@@ -14,574 +18,745 @@
             scroll-behavior: smooth;
         }
 
+        :root {
+            --roxo: #8b5cf6;
+            --rosa: #ec4899;
+            --rosa-claro: #f9a8d4;
+            --escuro: #09070d;
+            --escuro2: #120d18;
+            --cinza: #aaa4b3;
+            --branco: #ffffff;
+            --card: #17121e;
+        }
+
         body {
-            font-family: "Segoe UI", Arial, sans-serif;
-            background: #fff8fc;
-            color: #2d2330;
-            line-height: 1.7;
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--escuro);
+            color: var(--branco);
+            overflow-x: hidden;
         }
 
-        /* ---------- CABEÇALHO ---------- */
-
-        header {
-            min-height: 100vh;
-            background:
-                linear-gradient(135deg, rgba(72, 18, 65, 0.95), rgba(132, 43, 105, 0.88)),
-                radial-gradient(circle at top right, #e8a7d0, transparent 40%);
-            color: white;
-            display: flex;
-            flex-direction: column;
+        a {
+            color: inherit;
+            text-decoration: none;
         }
+
+        /* =========================
+           MENU
+        ========================== */
 
         nav {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
-            padding: 25px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
+
+            padding: 20px 7%;
+
+            background: rgba(9, 7, 13, 0.75);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: bold;
-            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--rosa);
         }
 
         nav ul {
             display: flex;
+            gap: 28px;
             list-style: none;
-            gap: 25px;
         }
 
         nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
+            color: #d9d3df;
+            font-size: 0.9rem;
+            transition: .3s;
         }
 
         nav a:hover {
-            color: #ffd2ec;
+            color: var(--rosa-claro);
         }
 
+        /* =========================
+           HERO
+        ========================== */
+
         .hero {
-            width: 90%;
-            max-width: 1100px;
-            margin: auto;
-            padding: 60px 0 100px;
-            display: grid;
-            grid-template-columns: 1.3fr 0.7fr;
-            gap: 60px;
+            min-height: 100vh;
+            position: relative;
+
+            display: flex;
             align-items: center;
+
+            padding: 140px 8% 80px;
+
+            background:
+                radial-gradient(circle at 80% 20%, rgba(236,72,153,.20), transparent 30%),
+                radial-gradient(circle at 20% 80%, rgba(139,92,246,.18), transparent 35%);
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+
+            background: var(--rosa);
+            filter: blur(150px);
+            opacity: .12;
+
+            right: -100px;
+            top: 200px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tag {
+            display: inline-block;
+
+            padding: 8px 15px;
+            border-radius: 30px;
+
+            color: var(--rosa-claro);
+            background: rgba(236,72,153,.08);
+            border: 1px solid rgba(236,72,153,.3);
+
+            font-size: .8rem;
+            letter-spacing: 2px;
+
+            margin-bottom: 25px;
         }
 
         .hero h1 {
+            font-size: clamp(3.5rem, 9vw, 8rem);
+            line-height: .88;
+            letter-spacing: -5px;
+            margin-bottom: 35px;
+        }
+
+        .gradient {
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #f9a8d4,
+                #a78bfa
+            );
+
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            max-width: 650px;
+            color: var(--cinza);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 35px;
+        }
+
+        .button {
+            display: inline-block;
+
+            padding: 15px 28px;
+
+            border-radius: 12px;
+
+            background: linear-gradient(
+                90deg,
+                var(--rosa),
+                var(--roxo)
+            );
+
+            font-weight: bold;
+
+            transition: .3s;
+        }
+
+        .button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(236,72,153,.25);
+        }
+
+        /* =========================
+           FRASE
+        ========================== */
+
+        .quote {
+            padding: 100px 8%;
+            background: var(--escuro2);
+            text-align: center;
+        }
+
+        .quote h2 {
+            max-width: 900px;
+            margin: auto;
+
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1.2;
+        }
+
+        .quote h2 span {
+            color: var(--rosa-claro);
+        }
+
+        /* =========================
+           SEÇÕES
+        ========================== */
+
+        section {
+            padding: 110px 8%;
+        }
+
+        .section-header {
+            max-width: 800px;
+            margin-bottom: 60px;
+        }
+
+        .number {
+            color: var(--rosa);
+            font-weight: bold;
+            font-size: .85rem;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            color: var(--cinza);
+            line-height: 1.8;
+        }
+
+        /* =========================
+           SOBRE
+        ========================== */
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: #c2bbc7;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .big-word {
+            font-size: clamp(5rem, 12vw, 12rem);
+            font-weight: bold;
+
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,.12);
+
+            text-align: center;
+        }
+
+        /* =========================
+           TIPOS
+        ========================== */
+
+        .types {
+            background: #0d0911;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            min-height: 270px;
+
+            padding: 30px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.05),
+                    rgba(255,255,255,.015)
+                );
+
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 20px;
+
+            position: relative;
+            overflow: hidden;
+
+            transition: .4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(236,72,153,.5);
+        }
+
+        .card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 120px;
+            height: 120px;
+
+            background: var(--rosa);
+            opacity: .08;
+
+            border-radius: 50%;
+
+            right: -50px;
+            bottom: -50px;
+        }
+
+        .emoji {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--cinza);
+            line-height: 1.7;
+            font-size: .95rem;
+        }
+
+        /* =========================
+           MITOS
+        ========================== */
+
+        .myths {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .myth {
+            padding: 30px;
+            background: var(--card);
+            border-radius: 18px;
+            border-left: 4px solid var(--rosa);
+        }
+
+        .myth h3 {
+            margin-bottom: 10px;
+        }
+
+        .myth .false {
+            color: #fb7185;
+            font-size: .8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .myth .truth {
+            color: #86efac;
+            font-size: .8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-top: 15px;
+        }
+
+        .myth p {
+            color: var(--cinza);
+            margin-top: 5px;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           SINAIS
+        ========================== */
+
+        .warning {
+            background:
+                linear-gradient(
+                    135deg,
+                    #210d1b,
+                    #100b16
+                );
+        }
+
+        .warning-list {
+            max-width: 950px;
+        }
+
+        .warning-item {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+
+            padding: 25px 0;
+
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .warning-icon {
+            min-width: 50px;
+            height: 50px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 50%;
+
+            background: rgba(236,72,153,.12);
+            color: var(--rosa-claro);
+
+            font-size: 1.3rem;
+        }
+
+        .warning-item p {
+            color: var(--cinza);
+        }
+
+        /* =========================
+           ESTATÍSTICAS
+        ========================== */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .stat {
+            padding: 40px 30px;
+
+            background: var(--card);
+
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 20px;
+
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: bold;
+
+            background: linear-gradient(
+                90deg,
+                var(--rosa),
+                var(--roxo)
+            );
+
+            -webkit-background-clip: text;
+            color: transparent;
+
+            margin-bottom: 15px;
+        }
+
+        .stat p {
+            color: var(--cinza);
+            line-height: 1.6;
+        }
+
+        /* =========================
+           AJUDA
+        ========================== */
+
+        .help {
+            background: linear-gradient(
+                135deg,
+                #7e2461,
+                #44206e
+            );
+        }
+
+        .help-container {
+            max-width: 900px;
+        }
+
+        .help h2 {
+            font-size: clamp(2.5rem, 5vw, 5rem);
+            margin-bottom: 25px;
+        }
+
+        .help p {
+            color: #f0dce9;
+            line-height: 1.8;
+            max-width: 700px;
+        }
+
+        .help-box {
+            margin-top: 40px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 20px;
+        }
+
+        .help-item {
+            padding: 25px;
+
+            background: rgba(0,0,0,.2);
+            border: 1px solid rgba(255,255,255,.15);
+            border-radius: 15px;
+        }
+
+        .help-item strong {
+            display: block;
+            font-size: 2rem;
+            margin-top: 5px;
+        }
+
+        /* =========================
+           CONCLUSÃO
+        ========================== */
+
+        .final {
+            text-align: center;
+            min-height: 500px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(236,72,153,.13),
+                    transparent 55%
+                );
+        }
+
+        .final-content {
+            max-width: 900px;
+        }
+
+        .final h2 {
             font-size: clamp(3rem, 7vw, 6rem);
             line-height: 1;
             margin-bottom: 25px;
         }
 
-        .hero h1 span {
-            color: #ffb9df;
+        .final p {
+            color: var(--cinza);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 650px;
-            color: #f9e9f4;
-            margin-bottom: 35px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 28px;
-            border-radius: 50px;
-            background: #fff;
-            color: #72245e;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(0,0,0,.25);
-        }
-
-        .hero-card {
-            background: rgba(255,255,255,.12);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,.25);
-            padding: 40px;
-            border-radius: 30px;
-            text-align: center;
-        }
-
-        .hero-card .icon {
-            font-size: 5rem;
-            margin-bottom: 20px;
-        }
-
-        /* ---------- SEÇÕES ---------- */
-
-        section {
-            padding: 90px 8%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 55px;
-        }
-
-        .section-title span {
-            color: #a73581;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: .85rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.7rem;
-            margin: 10px 0;
-            color: #4c1743;
-        }
-
-        .section-title p {
-            max-width: 700px;
-            margin: auto;
-            color: #6d5a68;
-        }
-
-        /* ---------- INTRODUÇÃO ---------- */
-
-        .intro {
-            max-width: 1000px;
-            margin: auto;
-            background: white;
-            border-radius: 25px;
-            padding: 45px;
-            box-shadow: 0 15px 50px rgba(100, 40, 80, .08);
-        }
-
-        .intro p {
-            margin-bottom: 18px;
-        }
-
-        .highlight {
-            border-left: 5px solid #b63a8c;
-            background: #fff0f8;
-            padding: 20px;
-            margin-top: 25px;
-            border-radius: 0 15px 15px 0;
-            font-weight: 600;
-        }
-
-        /* ---------- TIPOS DE VIOLÊNCIA ---------- */
-
-        .violence-section {
-            background: #f8eaf4;
-        }
-
-        .cards {
-            max-width: 1200px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 18px;
-        }
-
-        .card {
-            background: white;
-            padding: 30px 22px;
-            border-radius: 22px;
-            box-shadow: 0 10px 35px rgba(83, 29, 68, .08);
-            transition: .3s;
-            border-top: 5px solid #b63a8c;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-        }
-
-        .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        .card h3 {
-            color: #651b55;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: #685b64;
-            font-size: .95rem;
-        }
-
-        /* ---------- CICLO DA VIOLÊNCIA ---------- */
-
-        .cycle {
-            max-width: 1000px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .cycle-item {
-            text-align: center;
-            padding: 30px 20px;
-            background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(0,0,0,.06);
-        }
-
-        .number {
-            width: 55px;
-            height: 55px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            background: #87306e;
-            color: white;
-            border-radius: 50%;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        /* ---------- ALERTAS ---------- */
-
-        .warning-area {
-            background: #481c42;
-            color: white;
-        }
-
-        .warning-area .section-title h2 {
-            color: white;
-        }
-
-        .warning-area .section-title p {
-            color: #e8d6e4;
-        }
-
-        .warning-grid {
-            max-width: 1100px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        .warning-box {
-            padding: 35px;
-            border-radius: 25px;
-            background: rgba(255,255,255,.08);
-            border: 1px solid rgba(255,255,255,.12);
-        }
-
-        .warning-box h3 {
-            color: #ffb9df;
-            margin-bottom: 20px;
-        }
-
-        .warning-box ul {
-            list-style: none;
-        }
-
-        .warning-box li {
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,.1);
-        }
-
-        .warning-box li::before {
-            content: "✓";
-            color: #ff9dd4;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        /* ---------- CONSCIENTIZAÇÃO ---------- */
-
-        .message {
-            max-width: 1000px;
-            margin: auto;
-            text-align: center;
-            background: linear-gradient(135deg, #9b3478, #57204f);
-            color: white;
-            padding: 65px 40px;
-            border-radius: 30px;
-            box-shadow: 0 20px 50px rgba(80, 20, 65, .2);
-        }
-
-        .message h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .message p {
-            max-width: 750px;
-            margin: auto auto 30px;
-            color: #f9e7f3;
-        }
-
-        /* ---------- DADOS ---------- */
-
-        .stats {
-            max-width: 1000px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .stat {
-            background: white;
-            border-radius: 25px;
-            padding: 35px 25px;
-            text-align: center;
-            box-shadow: 0 10px 35px rgba(70, 20, 60, .08);
-        }
-
-        .stat strong {
-            display: block;
-            font-size: 2.5rem;
-            color: #9b3478;
-            margin-bottom: 10px;
-        }
-
-        .stat p {
-            color: #675b64;
-        }
-
-        .source-note {
-            text-align: center;
-            max-width: 850px;
-            margin: 30px auto 0;
-            color: #766a72;
-            font-size: .9rem;
-        }
-
-        /* ---------- AJUDA ---------- */
-
-        .help {
-            background: #f7e7f2;
-        }
-
-        .help-container {
-            max-width: 1050px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        .help-card {
-            background: white;
-            padding: 35px;
-            border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(80,30,70,.07);
-        }
-
-        .help-card h3 {
-            color: #681e58;
-            margin-bottom: 15px;
-        }
-
-        .phone {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #a8327d;
-        }
-
-        /* ---------- RODAPÉ ---------- */
+        /* =========================
+           RODAPÉ
+        ========================== */
 
         footer {
-            background: #291225;
-            color: #d8c8d4;
+            padding: 50px 8%;
+
+            background: #050407;
+
+            border-top: 1px solid rgba(255,255,255,.08);
+
             text-align: center;
-            padding: 45px 20px;
         }
 
         footer h3 {
-            color: white;
             margin-bottom: 10px;
         }
 
         footer p {
-            font-size: .9rem;
-            max-width: 700px;
-            margin: 8px auto;
+            color: #77717d;
+            font-size: .85rem;
         }
 
-        .back-top {
-            display: inline-block;
-            margin-top: 20px;
-            color: #ffb4dd;
-            text-decoration: none;
-        }
+        /* =========================
+           RESPONSIVO
+        ========================== */
 
-        /* ---------- RESPONSIVIDADE ---------- */
-
-        @media (max-width: 1000px) {
-            .cards {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .hero {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .hero-card {
-                max-width: 450px;
-                margin: auto;
-            }
-        }
-
-        @media (max-width: 700px) {
-            nav {
-                flex-direction: column;
-                gap: 15px;
-            }
+        @media(max-width: 900px) {
 
             nav ul {
-                gap: 12px;
-                flex-wrap: wrap;
-                justify-content: center;
+                display: none;
             }
 
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .big-word {
+                display: none;
+            }
+
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width: 600px) {
+
             section {
-                padding: 65px 5%;
+                padding: 80px 6%;
             }
 
             .hero {
-                padding-top: 40px;
+                padding-left: 6%;
+                padding-right: 6%;
             }
 
             .hero h1 {
-                font-size: 3.5rem;
+                letter-spacing: -3px;
             }
 
-            .cards,
-            .cycle,
-            .stats,
-            .warning-grid,
-            .help-container {
+            .grid,
+            .myths,
+            .help-box {
                 grid-template-columns: 1fr;
             }
 
-            .intro {
-                padding: 30px 22px;
+            .warning-item {
+                align-items: flex-start;
             }
         }
+
     </style>
 </head>
 
 <body>
 
-    <!-- ================= CABEÇALHO ================= -->
+    <!-- ================= MENU ================= -->
 
-    <header id="inicio">
+    <nav>
 
-        <nav>
-            <div class="logo">🌸 Voz & Respeito</div>
+        <div class="logo">
+            QUEBRANDO<span>O</span>SILÊNCIO
+        </div>
 
-            <ul>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#tipos">Tipos</a></li>
-                <li><a href="#alertas">Alertas</a></li>
-                <li><a href="#dados">Dados</a></li>
-                <li><a href="#ajuda">Ajuda</a></li>
-            </ul>
-        </nav>
+        <ul>
+            <li><a href="#sobre">O problema</a></li>
+            <li><a href="#tipos">Tipos</a></li>
+            <li><a href="#mitos">Mitos</a></li>
+            <li><a href="#sinais">Sinais</a></li>
+            <li><a href="#ajuda">Ajuda</a></li>
+        </ul>
 
-        <div class="hero">
+    </nav>
 
-            <div>
-                <p style="color:#ffb9df; font-weight:bold;">
-                    INFORMAÇÃO • PREVENÇÃO • CONSCIENTIZAÇÃO
-                </p>
 
-                <h1>
-                    Violência<br>
-                    contra a <span>mulher.</span>
-                </h1>
+    <!-- ================= HERO ================= -->
 
-                <p>
-                    Conhecer os diferentes tipos de violência é um passo
-                    importante para reconhecer situações de abuso,
-                    combater a desigualdade e construir uma sociedade
-                    baseada em respeito e segurança.
-                </p>
+    <header class="hero">
 
-                <a href="#sobre" class="btn">
-                    Conheça o tema ↓
-                </a>
+        <div class="hero-content">
+
+            <div class="tag">
+                CONSCIENTIZAÇÃO • RESPEITO • DIREITOS
             </div>
 
-            <div class="hero-card">
-                <div class="icon">🤝</div>
+            <h1>
+                NÃO É<br>
+                <span class="gradient">NORMAL.</span>
+            </h1>
 
-                <h2>Respeito é um direito.</h2>
+            <p>
+                Violência contra a mulher não é apenas uma agressão.
+                Pode aparecer através do controle, da ameaça,
+                da humilhação, do abuso e de muitas outras formas.
+            </p>
 
-                <p>
-                    Nenhuma mulher deve ser submetida à violência,
-                    ao medo, à humilhação ou ao controle.
-                </p>
-            </div>
+            <a href="#sobre" class="button">
+                Entender é o primeiro passo →
+            </a>
 
         </div>
+
     </header>
+
+
+    <!-- ================= FRASE ================= -->
+
+    <section class="quote">
+
+        <h2>
+            "Nenhuma mulher deveria precisar
+            <span>sentir medo</span> para viver."
+        </h2>
+
+    </section>
 
 
     <!-- ================= SOBRE ================= -->
 
     <section id="sobre">
 
-        <div class="section-title">
-            <span>01 • Entenda</span>
-            <h2>O que é violência contra a mulher?</h2>
+        <div class="section-header">
+
+            <div class="number">01 — O PROBLEMA</div>
+
+            <h2>
+                O silêncio também
+                pode esconder violência.
+            </h2>
 
             <p>
-                A violência contra a mulher pode acontecer de diferentes
-                maneiras e em diversos ambientes.
+                A violência contra a mulher é um problema social,
+                cultural e de direitos humanos. Ela pode acontecer
+                em relacionamentos, famílias, ambientes de trabalho,
+                escolas, espaços públicos e na internet.
             </p>
+
         </div>
 
-        <div class="intro">
+        <div class="about">
 
-            <p>
-                Violência contra a mulher é qualquer ação ou omissão baseada
-                no gênero que cause morte, lesão, sofrimento físico, sexual
-                ou psicológico, além de dano moral ou patrimonial.
-            </p>
+            <div class="about-text">
 
-            <p>
-                Ela pode acontecer dentro de casa, no relacionamento,
-                no trabalho, na escola, em espaços públicos ou até mesmo
-                no ambiente digital.
-            </p>
+                <p>
+                    Quando pensamos em violência, muitas vezes
+                    imaginamos apenas uma agressão física.
+                    Porém, existem diversas formas de violência
+                    que podem não deixar marcas visíveis.
+                </p>
 
-            <p>
-                Um dos aspectos mais importantes é compreender que violência
-                não significa apenas agressão física. Ameaças, humilhações,
-                controle, perseguição, abuso sexual e retenção de dinheiro
-                também podem fazer parte de situações de violência.
-            </p>
+                <p>
+                    Controle excessivo, ameaças, humilhações,
+                    isolamento, perseguição, abuso sexual e
+                    controle financeiro também podem fazer
+                    parte de uma relação abusiva.
+                </p>
 
-            <div class="highlight">
-                💜 A informação ajuda a identificar comportamentos abusivos
-                e pode contribuir para que vítimas e pessoas próximas
-                procurem ajuda e proteção.
+                <p>
+                    Por isso, informação e educação são ferramentas
+                    importantes para reconhecer situações de risco
+                    e fortalecer uma cultura de respeito.
+                </p>
+
+            </div>
+
+            <div class="big-word">
+                RESPEITO
             </div>
 
         </div>
@@ -591,73 +766,113 @@
 
     <!-- ================= TIPOS ================= -->
 
-    <section class="violence-section" id="tipos">
+    <section class="types" id="tipos">
 
-        <div class="section-title">
-            <span>02 • Conheça</span>
-            <h2>Tipos de violência</h2>
+        <div class="section-header">
+
+            <div class="number">02 — FORMAS DE VIOLÊNCIA</div>
+
+            <h2>
+                Existem diferentes
+                formas de machucar.
+            </h2>
 
             <p>
-                A violência pode assumir diferentes formas. Reconhecê-las
-                é fundamental para combater o problema.
+                Nem toda violência deixa uma marca no corpo.
+                Algumas feridas podem ser emocionais, sociais
+                ou financeiras.
             </p>
+
         </div>
 
-        <div class="cards">
+        <div class="grid">
 
             <div class="card">
-                <div class="card-icon">🩹</div>
-                <h3>Física</h3>
+
+                <div class="emoji">🥊</div>
+
+                <h3>Violência física</h3>
 
                 <p>
-                    Qualquer comportamento que prejudique a integridade
-                    ou a saúde corporal da mulher, como empurrões,
-                    socos, chutes ou agressões com objetos.
+                    Agressões que prejudicam a integridade física,
+                    como empurrões, socos, chutes e outras formas
+                    de agressão corporal.
                 </p>
+
             </div>
 
+
             <div class="card">
-                <div class="card-icon">🧠</div>
-                <h3>Psicológica</h3>
+
+                <div class="emoji">🧠</div>
+
+                <h3>Violência psicológica</h3>
 
                 <p>
-                    Ações que causam sofrimento emocional, como ameaças,
-                    humilhações, chantagens, isolamento, controle e
-                    desvalorização.
+                    Ameaças, humilhações, manipulação, isolamento,
+                    controle e comportamentos que provocam sofrimento
+                    emocional.
                 </p>
+
             </div>
 
+
             <div class="card">
-                <div class="card-icon">⚖️</div>
-                <h3>Moral</h3>
+
+                <div class="emoji">🗣️</div>
+
+                <h3>Violência moral</h3>
 
                 <p>
-                    Comportamentos que atingem a honra da mulher,
-                    incluindo insultos, difamação, calúnia e acusações
-                    destinadas a prejudicar sua reputação.
+                    Ofensas, insultos, calúnias, difamações e
+                    comportamentos que atacam a honra e a reputação
+                    da mulher.
                 </p>
+
             </div>
 
+
             <div class="card">
-                <div class="card-icon">💰</div>
-                <h3>Patrimonial</h3>
+
+                <div class="emoji">💳</div>
+
+                <h3>Violência patrimonial</h3>
 
                 <p>
-                    Envolve controlar, destruir, esconder ou retirar
-                    dinheiro, documentos, objetos pessoais ou outros
-                    bens da vítima.
+                    Controle ou destruição de dinheiro, documentos,
+                    objetos pessoais, bens ou recursos financeiros.
                 </p>
+
             </div>
 
+
             <div class="card">
-                <div class="card-icon">🚫</div>
-                <h3>Sexual</h3>
+
+                <div class="emoji">🚫</div>
+
+                <h3>Violência sexual</h3>
 
                 <p>
-                    Qualquer ato sexual realizado sem consentimento,
-                    incluindo coerção, constrangimento e impedimento
-                    do uso de métodos contraceptivos.
+                    Qualquer situação sexual sem consentimento,
+                    incluindo coerção, pressão e impedimento da
+                    liberdade de escolha.
                 </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="emoji">📱</div>
+
+                <h3>Violência digital</h3>
+
+                <p>
+                    Perseguição virtual, ameaças, exposição indevida,
+                    controle de redes sociais e outras formas de
+                    abuso praticadas por meios digitais.
+                </p>
+
             </div>
 
         </div>
@@ -665,61 +880,104 @@
     </section>
 
 
-    <!-- ================= CICLO ================= -->
+    <!-- ================= MITOS ================= -->
 
-    <section>
+    <section id="mitos">
 
-        <div class="section-title">
-            <span>03 • Atenção</span>
-            <h2>O ciclo da violência</h2>
+        <div class="section-header">
 
-            <p>
-                Em alguns relacionamentos abusivos, a violência pode
-                ocorrer de maneira repetitiva, formando um ciclo.
-            </p>
+            <div class="number">03 — QUEBRANDO MITOS</div>
+
+            <h2>
+                Algumas ideias precisam
+                ser desconstruídas.
+            </h2>
+
         </div>
 
-        <div class="cycle">
+        <div class="myths">
 
-            <div class="cycle-item">
-                <div class="number">1</div>
-                <h3>Tensão</h3>
+            <div class="myth">
+
+                <div class="false">✕ MITO</div>
+
+                <h3>"Ciúme é prova de amor."</h3>
 
                 <p>
-                    Discussões, ameaças, ciúmes, controle e comportamentos
-                    agressivos começam a aumentar.
+                    Ciúme excessivo e controle podem se transformar
+                    em comportamentos abusivos. Amor saudável envolve
+                    confiança e respeito.
                 </p>
+
+                <div class="truth">✓ VERDADE</div>
+
+                <p>
+                    Respeito não significa controlar a vida do outro.
+                </p>
+
             </div>
 
-            <div class="cycle-item">
-                <div class="number">2</div>
-                <h3>Agressão</h3>
+
+            <div class="myth">
+
+                <div class="false">✕ MITO</div>
+
+                <h3>"Se ela ficou, é porque aceitou."</h3>
 
                 <p>
-                    Ocorre um episódio de violência, que pode ser
-                    física, psicológica, sexual, moral ou patrimonial.
+                    Existem muitos motivos que podem dificultar
+                    o afastamento de uma relação abusiva.
                 </p>
+
+                <div class="truth">✓ VERDADE</div>
+
+                <p>
+                    A responsabilidade pela violência é de quem pratica
+                    a violência.
+                </p>
+
             </div>
 
-            <div class="cycle-item">
-                <div class="number">3</div>
-                <h3>Reconciliação</h3>
+
+            <div class="myth">
+
+                <div class="false">✕ MITO</div>
+
+                <h3>"Violência é só quando existe agressão física."</h3>
 
                 <p>
-                    O agressor pode pedir desculpas, demonstrar
-                    arrependimento ou prometer que a situação não
-                    voltará a acontecer.
+                    A violência pode acontecer de várias maneiras,
+                    inclusive sem deixar marcas físicas.
                 </p>
+
+                <div class="truth">✓ VERDADE</div>
+
+                <p>
+                    Ameaças, controle e humilhação também podem ser
+                    formas de violência.
+                </p>
+
             </div>
 
-            <div class="cycle-item">
-                <div class="number">4</div>
-                <h3>Repetição</h3>
+
+            <div class="myth">
+
+                <div class="false">✕ MITO</div>
+
+                <h3>"Isso é problema de casal."</h3>
 
                 <p>
-                    Com o tempo, novas situações de tensão podem surgir
-                    e o ciclo pode começar novamente.
+                    A violência não deve ser tratada como uma simples
+                    discussão entre parceiros.
                 </p>
+
+                <div class="truth">✓ VERDADE</div>
+
+                <p>
+                    Violência é uma questão de segurança, direitos
+                    e dignidade.
+                </p>
+
             </div>
 
         </div>
@@ -727,50 +985,81 @@
     </section>
 
 
-    <!-- ================= ALERTAS ================= -->
+    <!-- ================= SINAIS ================= -->
 
-    <section class="warning-area" id="alertas">
+    <section class="warning" id="sinais">
 
-        <div class="section-title">
-            <span>04 • Identifique</span>
+        <div class="section-header">
 
-            <h2>Sinais de um relacionamento abusivo</h2>
+            <div class="number">04 — FIQUE ATENTO</div>
+
+            <h2>
+                Alguns sinais não
+                devem ser ignorados.
+            </h2>
 
             <p>
-                Alguns comportamentos podem ser sinais de controle
-                e violência psicológica.
+                Um único comportamento não define necessariamente
+                uma situação de violência, mas sinais repetidos de
+                controle e medo merecem atenção.
             </p>
+
         </div>
 
-        <div class="warning-grid">
+        <div class="warning-list">
 
-            <div class="warning-box">
+            <div class="warning-item">
 
-                <h3>⚠️ Comportamentos de controle</h3>
+                <div class="warning-icon">!</div>
 
-                <ul>
-                    <li>Controlar roupas, amizades ou lugares frequentados.</li>
-                    <li>Exigir senhas ou acesso às redes sociais.</li>
-                    <li>Demonstrar ciúme excessivo.</li>
-                    <li>Impedir contato com familiares e amigos.</li>
-                    <li>Controlar dinheiro ou decisões pessoais.</li>
-                    <li>Fazer ameaças ou chantagens.</li>
-                </ul>
+                <p>
+                    A pessoa tenta controlar com quem você pode falar
+                    ou onde pode ir.
+                </p>
 
             </div>
 
-            <div class="warning-box">
+            <div class="warning-item">
 
-                <h3>⚠️ Comportamentos de humilhação</h3>
+                <div class="warning-icon">!</div>
 
-                <ul>
-                    <li>Insultar ou ridicularizar constantemente.</li>
-                    <li>Diminuir a autoestima da mulher.</li>
-                    <li>Culpar a vítima pela própria violência.</li>
-                    <li>Ameaçar terminar ou abandonar como forma de controle.</li>
-                    <li>Desvalorizar opiniões e conquistas.</li>
-                    <li>Fazer a vítima sentir medo.</li>
-                </ul>
+                <p>
+                    Exige senhas, monitora mensagens ou invade sua
+                    privacidade constantemente.
+                </p>
+
+            </div>
+
+            <div class="warning-item">
+
+                <div class="warning-icon">!</div>
+
+                <p>
+                    Faz ameaças, chantagens ou provoca medo para conseguir
+                    o que deseja.
+                </p>
+
+            </div>
+
+            <div class="warning-item">
+
+                <div class="warning-icon">!</div>
+
+                <p>
+                    Diminui suas conquistas, aparência, inteligência
+                    ou capacidade.
+                </p>
+
+            </div>
+
+            <div class="warning-item">
+
+                <div class="warning-icon">!</div>
+
+                <p>
+                    Tenta afastar você de amigos, familiares ou outras
+                    pessoas que poderiam oferecer apoio.
+                </p>
 
             </div>
 
@@ -781,84 +1070,60 @@
 
     <!-- ================= DADOS ================= -->
 
-    <section id="dados">
+    <section>
 
-        <div class="section-title">
-            <span>05 • A realidade</span>
+        <div class="section-header">
 
-            <h2>Por que falar sobre isso?</h2>
+            <div class="number">05 — UM PROBLEMA REAL</div>
+
+            <h2>
+                Informação transforma
+                silêncio em consciência.
+            </h2>
 
             <p>
-                A violência contra a mulher é um problema social que
-                precisa ser enfrentado por toda a sociedade.
+                Dados de organizações nacionais e internacionais
+                mostram que a violência contra mulheres é um problema
+                presente em diferentes sociedades.
             </p>
+
         </div>
 
         <div class="stats">
 
             <div class="stat">
-                <strong>1 em 3</strong>
+
+                <div class="stat-number">01</div>
 
                 <p>
-                    Mulheres no mundo sofrem violência física e/ou
-                    sexual ao longo da vida, segundo estimativas
-                    da Organização Mundial da Saúde.
+                    A violência pode acontecer em diferentes ambientes,
+                    inclusive dentro de relacionamentos e famílias.
                 </p>
+
             </div>
 
             <div class="stat">
-                <strong>Silêncio</strong>
+
+                <div class="stat-number">05</div>
 
                 <p>
-                    Muitas situações de violência permanecem escondidas,
-                    o que dificulta o acesso das vítimas à proteção e
-                    aos serviços de apoio.
+                    A legislação brasileira reconhece cinco formas
+                    de violência doméstica e familiar previstas
+                    na Lei Maria da Penha.
                 </p>
+
             </div>
 
             <div class="stat">
-                <strong>Prevenção</strong>
+
+                <div class="stat-number">180</div>
 
                 <p>
-                    Educação, informação, políticas públicas e redes
-                    de apoio são fundamentais para enfrentar a violência.
+                    O Ligue 180 oferece orientação e informações
+                    relacionadas à violência contra a mulher.
                 </p>
+
             </div>
-
-        </div>
-
-        <p class="source-note">
-            Fonte de referência: Organização Mundial da Saúde (OMS) e
-            legislação brasileira sobre violência doméstica e familiar
-            contra a mulher. Consulte fontes oficiais para dados
-            estatísticos atualizados.
-        </p>
-
-    </section>
-
-
-    <!-- ================= MENSAGEM ================= -->
-
-    <section>
-
-        <div class="message">
-
-            <h2>Não normalize a violência. 💜</h2>
-
-            <p>
-                Ciúme não é prova de amor. Controle não é cuidado.
-                Humilhação não é brincadeira. Agressão não é demonstração
-                de carinho.
-            </p>
-
-            <p>
-                Construir relações saudáveis significa respeitar limites,
-                opiniões, escolhas, liberdade e dignidade.
-            </p>
-
-            <a href="#ajuda" class="btn">
-                Onde buscar ajuda
-            </a>
 
         </div>
 
@@ -869,51 +1134,37 @@
 
     <section class="help" id="ajuda">
 
-        <div class="section-title">
-
-            <span>06 • Proteção</span>
-
-            <h2>Onde buscar ajuda no Brasil?</h2>
-
-            <p>
-                Se você ou alguém que conhece estiver passando por uma
-                situação de violência, procure ajuda de serviços
-                especializados e autoridades competentes.
-            </p>
-
-        </div>
-
         <div class="help-container">
 
-            <div class="help-card">
+            <h2>
+                Você não precisa
+                enfrentar isso sozinha.
+            </h2>
 
-                <h3>📞 Ligue 180</h3>
+            <p>
+                Se uma mulher estiver vivendo uma situação de violência,
+                é importante procurar uma rede segura de apoio. Familiares,
+                amigos, serviços especializados e autoridades podem ajudar
+                na busca por proteção.
+            </p>
 
-                <p>
-                    O Ligue 180 é o serviço de atendimento à mulher
-                    utilizado para orientação, informações e registro
-                    de situações relacionadas à violência contra a mulher.
-                </p>
+            <div class="help-box">
 
-                <div class="phone">180</div>
+                <div class="help-item">
 
-            </div>
+                    <span>Central de Atendimento à Mulher</span>
 
-            <div class="help-card">
+                    <strong>180</strong>
 
-                <h3>🚨 Em situação de emergência</h3>
+                </div>
 
-                <p>
-                    Em uma situação de emergência ou risco imediato,
-                    procure um local seguro e acione os serviços de
-                    emergência apropriados.
-                </p>
+                <div class="help-item">
 
-                <div class="phone">190</div>
+                    <span>Emergência policial</span>
 
-                <p>
-                    Polícia Militar — situações de emergência.
-                </p>
+                    <strong>190</strong>
+
+                </div>
 
             </div>
 
@@ -924,41 +1175,29 @@
 
     <!-- ================= CONCLUSÃO ================= -->
 
-    <section>
+    <section class="final">
 
-        <div class="section-title">
+        <div class="final-content">
 
-            <span>07 • Conclusão</span>
-
-            <h2>Combater a violência é responsabilidade de todos</h2>
-
-            <p>
-                Uma sociedade mais segura começa com respeito,
-                educação, informação e acolhimento.
-            </p>
-
-        </div>
-
-        <div class="intro">
-
-            <p>
-                Combater a violência contra a mulher não significa apenas
-                agir depois que uma agressão acontece. Também significa
-                prevenir, educar, questionar comportamentos abusivos,
-                apoiar vítimas e promover relações baseadas em respeito
-                e igualdade.
-            </p>
-
-            <p>
-                É importante lembrar que a responsabilidade pela violência
-                é sempre de quem a pratica. A vítima não deve ser culpabilizada
-                pelo comportamento do agressor.
-            </p>
-
-            <div class="highlight">
-                🌷 Respeitar mulheres é respeitar direitos humanos,
-                liberdade, dignidade e igualdade.
+            <div class="number">
+                06 — UMA MENSAGEM
             </div>
+
+            <h2>
+                Respeito não é favor.
+                É direito.
+            </h2>
+
+            <p>
+                Combater a violência contra a mulher começa quando
+                deixamos de normalizar comportamentos abusivos,
+                ouvimos quem precisa de ajuda e construímos relações
+                baseadas em respeito, igualdade e liberdade.
+            </p>
+
+            <a href="#inicio" class="button">
+                Voltar ao início ↑
+            </a>
 
         </div>
 
@@ -969,21 +1208,17 @@
 
     <footer>
 
-        <h3>🌸 Voz & Respeito</h3>
+        <h3>QUEBRANDO O SILÊNCIO</h3>
 
         <p>
-            Trabalho escolar sobre violência contra a mulher.
+            Trabalho escolar — Violência contra a mulher
         </p>
 
         <p>
-            Informação • Conscientização • Prevenção • Respeito
+            Informação • Educação • Respeito • Conscientização
         </p>
-
-        <a href="#inicio" class="back-top">
-            ↑ Voltar ao topo
-        </a>
 
     </footer>
 
 </body>
-</html>2308
+</html>
